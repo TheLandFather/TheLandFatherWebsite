@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Page</title>
+    <style>
+        body {
+            background-color: white;
+            font-family: 'Century Gothic', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+        }
+        .top-image {
+            width: 100%;
+            height: auto;
+        }
+        .green-border-left, .green-border-right {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: 0.5cm;
+            background-color: green;
+            z-index: 10; /* Ensure it appears above other elements */
+        }
+        .green-border-left {
+            left: 0; /* Position at the very left */
+        }
+        .green-border-right {
+            right: 0;
+        }
+        .content-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .border-box {
+            width: 70%;
+            height: 3in;
+            margin: 1in 0; /* 1 inch vertically away */
+            padding: 20px;
+            background-color: #277da0;
+            border: 5px solid #a1e3fb;
+            border-radius: 10px;
+            color: white;
+            display: flex;
+            opacity: 0;
+            z-index: 1; /* Ensure it appears below the borders */
+            transition: opacity 1s;
+        }
+        .left-box {
+            margin-left: -9cm; /* Move 4 cm more to the left */
+            flex-direction: row;
+        }
+        .right-box {
+            margin-left: 9cm;
+            flex-direction: row-reverse;
+        }
+        .border-box img {
+            max-height: 100%;
+            max-width: 45%;
+            margin-right: 20px;
+        }
+        .border-box p {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .back-button {
+            transition: opacity 1s;
+            opacity: 0;
+            text-align: center;
+            margin-top: 2in; /* Ensuring it's at the very bottom */
+        }
+        .back-button img {
+            width: 300px; /* Adjust size as needed */
+            height: auto;
+        }
+        .flash-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            opacity: 1;
+            transition: opacity 1s ease-in-out; /* Adjust this duration for slower effect */
+            z-index: 20;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .border-box {
+                width: 90%;
+                height: auto;
+                margin: 20px 0;
+            }
+            .left-box, .right-box {
+                margin-left: 0;
+                flex-direction: column;
+                text-align: center;
+            }
+            .border-box img {
+                margin: 0 auto 20px auto;
+                max-width: 90%;
+            }
+            .top-image {
+                height: auto;
+            }
+            .back-button {
+                margin-top: 20px;
+            }
+        }
+        @media (orientation: portrait) {
+            .green-border-left, .green-border-right {
+                height: 0.5cm;
+                width: 100%;
+                top: 0;
+                bottom: auto;
+            }
+            .green-border-left {
+                left: 0;
+            }
+            .green-border-right {
+                right: 0;
+            }
+        }
+        @media (orientation: landscape) {
+            .green-border-left, .green-border-right {
+                width: 0.5cm;
+                height: 100%;
+                top: 0;
+                bottom: 0;
+            }
+            .green-border-left {
+                left: 0;
+            }
+            .green-border-right {
+                right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img class="top-image" src="Material(s)/AboutPagePicture.png" alt="About Page Intro">
+        <div class="green-border-left"></div>
+        <div class="green-border-right"></div>
+        <div class="flash-effect" id="flashEffect"></div> <!-- Flash effect on page load -->
+        <div class="content-section">
+            <div class="border-box left-box">
+                <img src="Material(s)/Section1.jpg" alt="Image 1">
+                <p>I am born in Perpetual Help Medical Center - Las Piñas Hospital on April 12, 2003. 
+                    Until today, the Hospital still exists and I can still see it as I travel by.</p>
+            </div>
+            <div class="border-box right-box">
+                <img src="Material(s)/Section2.jpg" alt="Image 2">
+                <p>During Grade 2, I was enrolled in Home School for almost 7-8 years. Most of the lessons and teachings 
+                    that I have learned during my time in Home School are more about Christianity and Moral Values.</p>
+            </div>
+            <div class="border-box left-box">
+                <img src="Material(s)/Section3.jpg" alt="Image 1">
+                <p>I took the PEP Test in order to advance from Grade 9 to Grade 11,
+                    then I was enrolled in STI College Las Piñas from Grade 11 until Grade 12.
+                    During this time, I took ABM as my strand hoping I would be an accountant someday,
+                    however it doesn't seem to have worked out.</p>
+            </div>
+            <div class="border-box right-box">
+                <img src="Material(s)/Section4.jpg" alt="Image 2">
+                <p>Currently, I am studying at CIIT College of Arts and Technology as a BSEMC (Major in Game Development).
+                    It somehow made me learn more about programming and technology. Fortunately, I don't feel any pressure when it
+                    comes to assignments, and at the same time, I'm still learning more. I do hope I can pursue this course until 4th year.</p>
+            </div>
+            <div class="border-box left-box">
+                <img src="Material(s)/Section5.png" alt="Image 1">
+                <p>I usually attend Christ's Commission Fellowship. They have many churches all around the country; 
+                    however, there is a church near Las Piñas, so I usually attend there.</p>
+            </div>
+            <!-- Add more border boxes as needed -->
+            <a href="../Website (True).html" class="back-button">
+                <img src="Material(s)/Back to the Website.png" alt="Back to the Website">
+            </a>
+        </div>
+    </div>
+    <script>
+        window.addEventListener('scroll', function() {
+            let elements = document.querySelectorAll('.border-box, .back-button');
+            elements.forEach(element => {
+                let rect = element.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                    element.style.opacity = 1;
+                } else {
+                    element.style.opacity = 0;
+                }
+            });
+        });
+
+        // Scroll to top when page is loaded
+        window.onload = function() {
+            window.scrollTo(0, 0);
+            // Trigger flash effect on page load
+            let flashEffect = document.getElementById('flashEffect');
+            flashEffect.style.opacity = 0;
+            setTimeout(function() {
+                flashEffect.remove();
+            }, 1000); /* Match the transition duration */
+        };
+
+        // Redirect to the same page on refresh to ensure it starts from the top
+        if (performance.navigation.type === 1) {
+            window.location.href = window.location.href.split('?')[0] + '?reload';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Goals Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Times New Roman", Times, serif;
+            background: url('Material(s)/MyGoals.png') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            transition: background-image 1s ease-in-out;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            animation: fadeIn 3s;
+            z-index: 2;
+            position: relative;
+            padding: 20px;
+        }
+        .top-bar {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .top-bar h1 {
+            font-size: 2.14cm;
+            margin: 0;
+            padding: 10px;
+            white-space: normal;
+            word-wrap: break-word;
+            max-width: 80%;
+        }
+        .left-icon {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 3cm;
+            height: 3cm;
+            z-index: 4;
+        }
+        .right-icon {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 3cm;
+            height: 3cm;
+            z-index: 4;
+        }
+        .content {
+            width: 100%;
+            margin-top: 5in;
+            padding: 0 0.3cm;
+        }
+        .title-wrapper, .description-wrapper {
+            background-color: rgba(0, 0, 0, 0.7);
+            width: 100vw; /* Extend to full viewport width */
+            display: flex;
+            justify-content: center;
+        }
+        .title, .description {
+            padding: 10px;
+            white-space: normal;
+            word-wrap: break-word;
+            max-width: 80%;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .title {
+            font-size: 2cm;
+        }
+        .description {
+            font-size: 1cm;
+        }
+        .arrow {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2cm;
+            height: 2cm;
+            cursor: pointer;
+            z-index: 3;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        .arrow.left {
+            left: 0.3cm;
+        }
+        .arrow.right {
+            right: 0.3cm;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .top-bar h1 {
+                font-size: 1cm;
+                max-width: 80%;
+                margin: 0 auto;
+            }
+            .left-icon, .right-icon {
+                width: 2.5cm;  /* Enlarge icons on mobile */
+                height: 2.5cm; /* Enlarge icons on mobile */
+            }
+            .arrow {
+                width: 1.3cm; /* Adjust arrow size if needed */
+                height: 1.3cm; /* Adjust arrow size if needed */
+            }
+            .content {
+                margin-top: 15%;
+            }
+            .title {
+                font-size: 1cm;
+            }
+            .description {
+                font-size: 0.4cm;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .top-bar h1 {
+                font-size: 1cm;
+                max-width: 80%;
+                margin: 0 auto;
+            }
+            .left-icon, .right-icon {
+                width: 2.5cm;  /* Further enlarge icons on smaller devices */
+                height: 2.5cm; /* Further enlarge icons on smaller devices */
+            }
+            .arrow {
+                width: 1.3cm; /* Adjust arrow size if needed */
+                height: 1.3cm; /* Adjust arrow size if needed */
+            }
+            .content {
+                margin-top: 25%;
+            }
+            .title {
+                font-size: 1cm;
+            }
+            .description {
+                font-size: 0.4cm;
+            }
+        }
+    </style>
+    <script src="JQuery 3.7.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            let goals = [
+                {
+                    title: "Making Games",
+                    description: "I want to make Games in the future",
+                    background: "url('Material(s)/MyGoals.png')"
+                },
+                {
+                    title: "Make Software Apps",
+                    description: "I want to make Apps in the Future",
+                    background: "url('Material(s)/MyGoals2.png')"
+                },
+                {
+                    title: "Make videos",
+                    description: "I want to make Videos in the future",
+                    background: "url('Material(s)/MyGoals3.png')"
+                }
+            ];
+
+            let currentGoalIndex = 0;
+
+            function preloadImages(array) {
+                if (!preloadImages.list) {
+                    preloadImages.list = [];
+                }
+                let list = preloadImages.list;
+                for (let i = 0; i < array.length; i++) {
+                    let img = new Image();
+                    img.onload = function() {
+                        let index = list.indexOf(this);
+                        if (index !== -1) {
+                            list.splice(index, 1);
+                        }
+                    }
+                    list.push(img);
+                    img.src = array[i];
+                }
+            }
+
+            preloadImages(['Material(s)/MyGoals.png', 'Material(s)/MyGoals2.png', 'Material(s)/MyGoals3.png']);
+
+            function updateGoal() {
+                $('.title-wrapper, .description-wrapper, .arrow').css('opacity', 0);
+                setTimeout(function() {
+                    $('.title').text(goals[currentGoalIndex].title).css('opacity', 1);
+                    $('.description').text(goals[currentGoalIndex].description).css('opacity', 1);
+                    $('body').css('background-image', goals[currentGoalIndex].background);
+                    $('.title-wrapper, .description-wrapper, .arrow').css('opacity', 1);
+                }, 500);  // Adding a delay to ensure the image has time to load
+            }
+
+            $('.arrow.left').click(function() {
+                currentGoalIndex = (currentGoalIndex > 0) ? currentGoalIndex - 1 : goals.length - 1;
+                updateGoal();
+            });
+
+            $('.arrow.right').click(function() {
+                currentGoalIndex = (currentGoalIndex < goals.length - 1) ? currentGoalIndex + 1 : 0;
+                updateGoal();
+            });
+
+            updateGoal();
+        });
+    </script>
+</head>
+<body>
+    <img src="Material(s)/Go Back to the Website - Left.png" alt="Go Back Left" class="left-icon" onclick="window.location.href='../Website (True).html'">
+    <img src="Material(s)/Go Back to the Website - Right.png" alt="Go Back Right" class="right-icon" onclick="window.location.href='../Website (True).html'">
+    <div class="top-bar">
+        <h1>My Goals in the Future</h1>
+    </div>
+    <div class="container">
+        <div class="content">
+            <div class="title-wrapper">
+                <div class="title"></div>
+            </div>
+            <div class="description-wrapper">
+                <div class="description"></div>
+            </div>
+        </div>
+    </div>
+    <img src="Material(s)/Arrow Left.png" alt="Arrow Left" class="arrow left">
+    <img src="Material(s)/Arrow Right.png" alt="Arrow Right" class="arrow right">
+</body>
+</html>
