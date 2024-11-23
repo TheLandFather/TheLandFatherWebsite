@@ -11,12 +11,33 @@ $(document).ready(function() {
     ];
     var current = 0;
 
+    function preloadImages(urls, callback) {
+        var loaded = 0;
+        var images = [];
+        urls.forEach(function(url, index) {
+            images[index] = new Image();
+            images[index].src = url.replace('url(', '').replace(')', '').replace(/"/g, '');
+            images[index].onload = function() {
+                loaded++;
+                if (loaded === urls.length && callback) {
+                    callback();
+                }
+            };
+        });
+    }
+
     function nextBackground() {
         current++;
         current = current % backgrounds.length;
-        header.css('background-image', backgrounds[current]);
+        header.fadeOut(1000, function() { // 1000ms fade out
+            header.css('background-image', backgrounds[current]);
+            header.fadeIn(1000); // 1000ms fade in
+        });
     }
-    setInterval(nextBackground, 10000);
+
+    preloadImages(backgrounds, function() {
+        setInterval(nextBackground, 10000); // Change background every 10 seconds
+    });
 
     header.css('background-image', backgrounds[0]);
 

@@ -41,7 +41,6 @@
         transition: opacity 0.4s ease-in-out;
         visibility: hidden;
         will-change: opacity, visibility;
-        height: calc(22% - 5px); /* Slightly reduced height */
     }
     /* Specific Positioning */
     #about { top: 12%; left: 5%; width: 40%; height: 22%; }
@@ -83,19 +82,35 @@
             height: auto;
             overflow-y: auto; /* Enable vertical scrolling */
         }
+        #introVideo, #bgVideo {
+            height: auto;
+            object-fit: cover; /* Ensure videos cover the container */
+        }
         .border-box {
             position: static;
             width: 80%;
             margin: 10px auto;
-        }
-        #about, #gallery, #hobbies, #goals, #gameSuggestions {
-            width: 80%;
-            left: 10%;
+            height: auto;
         }
         .title {
             font-size: 10vw;
             position: static;
             margin-top: 20px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        #introVideo, #bgVideo {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        .border-box {
+            width: 90%;
+            height: auto;
+        }
+        .title {
+            font-size: 8vw;
         }
     }
 </style>
@@ -112,32 +127,32 @@
 <!-- Information Boxes -->
 <div id="about" class="border-box">
     <h2>About Me</h2>
-    <p>W</p>
-    <a href="WebPage(s)\AboutPage\AboutPage(Intro).html" class="button">Learn More</a>
+    <p>Welcome to my website. If you want to learn more about the creator of this website, click "Learn More" below.</p>
+    <a href="WebPage(s)/AboutPage/AboutPage(Intro).html" class="button">Learn More</a>
 </div>
 
 <div id="gallery" class="border-box">
     <h2>Gallery/Projects</h2>
-    <p>C</p>
+    <p>Check out some of my works and projects by clicking "See More" below. From coding challenges to creative arts, here's a glimpse into my portfolio.</p>
     <a href="gallery.html" class="button">See More</a>
 </div>
 
 <div id="hobbies" class="border-box">
     <h2>Hobbies</h2>
-    <p>I</p>
+    <p>I enjoy coding, gaming, and exploring new technologies. Want to know more about what I do? Click "Learn More" below.</p>
     <a href="hobbies.html" class="button">Learn More</a>
 </div>
 
 <div id="goals" class="border-box">
     <h2>My Goals</h2>
-    <p>I.</p>
+    <p>I have many things I want to do in the future, from creating new games and apps to helping people, including my family. Buying new equipment, gadgets, and devices helps enhance my coding and gaming skills. I also want to learn new things through experiences and connect with others. If you're interested in learning more, click "Learn More" below.</p>
     <a href="WebPage(s)/MyGoalsPage/MyGoalsPage.html" class="button">Learn More</a>
 </div>
 
 <div id="gameSuggestions" class="border-box">
     <h2>Game Suggestions</h2>
-    <p>Are.</p>
-    <a href="WebPage(s)\GameSuggestionPage\GameSuggestionPage.html" class="button">Learn More</a>
+    <p>Are you a fan of playing games? Maybe you'll like some of the games we suggest: racing, strategy, shooter, and combat building games. We also have a bonus genre you might enjoy. Click "Learn More" below to start your journey in finding new games to play.</p>
+    <a href="WebPage(s)/GameSuggestionPage/GameSuggestionPage.html" class="button">Learn More</a>
 </div>
 
 <script>
