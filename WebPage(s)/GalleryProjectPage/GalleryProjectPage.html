@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Project Page</title>
+    <style>
+        body {
+            background-color: #181818;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            opacity: 0; /* Initially hide body */
+            animation: fadeIn 2s forwards; /* Fade in effect */
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .banner {
+            width: 100%;
+            height: 200px;
+            background: url('Material(s)/BannerPicture.jpg') no-repeat center center;
+            background-size: cover;
+            position: relative;
+        }
+
+        .profile-picture {
+            width: 300px;
+            height: 300px;
+            border-radius: 60%;
+            margin: -150px auto 20px; /* Adjust margin to place the profile picture correctly */
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-top: 0; /* Adjust to position title correctly */
+        }
+
+        .support-button {
+            background-color: #ff0000;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-bottom: 40px;
+            border-radius: 20px;
+        }
+
+        .support-button a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .gallery-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .gallery-item {
+            background-color: #242424;
+            border-radius: 15px;
+            width: 80%;
+            margin: 0.5in 0;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .gallery-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-item img, .gallery-item video {
+            height: 2in;
+            border-radius: 10px;
+        }
+
+        .gallery-item video, .gallery-item img {
+            display: block;
+            height: 3.5in;
+            width: auto;
+        }
+
+        .description {
+            text-align: center;
+            padding: 1cm;
+        }
+
+        .description h3 {
+            font-size: 2em; /* Making title bigger */
+            font-weight: bold; /* Making title thicker */
+            text-align: center;
+        }
+
+        .description p {
+            font-size: 1.25em; /* Making description text bigger */
+        }
+
+        .stair-left {
+            margin-left: -6cm; /* Move further to the left */
+        }
+
+        .stair-middle {
+            margin: 0 auto;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stair-right {
+            margin-left: 6.3cm;
+        }
+
+        .LinkButton {
+            background-color: #555555;
+            color: #ffffff;
+            border: none;
+            padding: 20px; /* Bigger height */
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 4cm; /* Adjusted the position */
+            border-radius: 20px;
+        }
+
+        .LinkButton a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .back-button {
+            background-color: #555555;
+            color: #ffffff;
+            border: none;
+            padding: 20px; /* Bigger height */
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 4cm; /* Adjusted the position */
+            border-radius: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .back-button.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-button a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .description-left {
+            text-align: left;
+        }
+
+        .description-center {
+            text-align: center;
+        }
+
+        .description-right {
+            text-align: right;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .gallery-item {
+                flex-direction: column;
+                text-align: center;
+                width: 90%;
+                margin: 20px 0;
+            }
+            .gallery-item img, .gallery-item video {
+                height: auto;
+                width: 90%;
+                margin-bottom: 20px;
+            }
+            .stair-left, .stair-right {
+                margin-left: 0;
+            }
+        }
+
+        @media (orientation: portrait) {
+            .profile-picture {
+                width: 200px;
+                height: 200px;
+                margin: -100px auto 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+        }
+
+        @media (orientation: landscape) {
+            .profile-picture {
+                width: 300px;
+                height: 300px;
+                margin: -150px auto 20px;
+            }
+            h1 {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="banner"></div>
+    <img src="Material(s)/ProfilePicture.jpg" alt="Profile Picture" class="profile-picture">
+    <h1>TheLandFather</h1>
+    <button class="support-button">
+        <a href="https://www.youtube.com/channel/UCZ3azVXu0kUUPkh-KfeFi7Q" target="_blank">Support my Channel</a>
+    </button>
+    <div class="gallery-container">
+        <!-- Gallery Items -->
+        <div class="gallery-item stair-left">
+            <video src="Material(s)/Project1.mp4" controls></video>
+            <div class="description description-left">
+                <h3>PMD's Rusted Warfare Mod Pack (2K20): Trailer</h3>
+                <p>Considered to be my biggest Mod Pack ever made. 
+                    I manually downloaded each and every Mods from Steam, one by one, and repacked them into a single Mod Pack.
+                    It is considered as the only Mod Pack ever existed in Rusted Warfare capable for Players to use on their Android Devices.
+                    However it can only be used on Older Versions of Rusted Warfare.</p>
+            </div>
+        </div>
+
+        <div class="gallery-item stair-middle">
+            <video src="Material(s)/Project2.mp4" controls></video>
+            <div class="description">
+                <h3>PMD's Rusted Warfare Mod Pack (2K22): Trailer</h3>
+                <p>The successor of the old PMD's Rusted Warfare Mod Pack (2K20), though it did not receive that much traction or fame,
+                    it is considered as a success as most of the Mods it contains supports the Latest Version of Rusted Warfare.
+                    It is bigger and more organized than the other old Mod Packs I made. </p>
+            </div>
+        </div>
+
+        <div class="gallery-item stair-right">
+            <video src="Material(s)/Project3.mp4" controls></video>
+            <div class="description description-right">
+                <h3>Hearts of Iron - Katyusha (Full with Crescendo)</h3>
+                <p>My First ever success when it comes to editing or making Music,
+                    though I have been editing and uploading Musics already, this is the
+                First ever Music that I have made to reach atleast 1k Views.</p>
+            </div>
+        </div>
+
+        <div class="gallery-item stair-middle">
+            <video src="Material(s)/Project4.mp4" controls></video>
+            <div class="description">
+                <h3>PMD's RWMP 2K22 Teaser</h3>
+                <p>Although this Teaser is not that popular but I considered it my proud work as it gives me goosebumps when I watch it. </p>
+            </div>
+        </div>
+
+        <div class="gallery-item stair-left">
+            <img src="Material(s)/Project5.png" alt="Image">
+            <div class="description description-left">
+                <h3>My First Ever Own Webpage</h3>
+                <p>Made entirely by HTML, it is a Tool that generates a code based on the Name and Date you've input,
+                    it will then be converted to BaseCode 64, however I made it more complex, each words and letters represents
+                different characters again, making it hard to decrypt, I also have my own decryptor for it to work.
+                If you want to try it out, you can click the button below.</p>
+                <button class="LinkButton">
+                    <a href="https://thelandfather.github.io/TheLandFather-Growtopia-Promo-Participation-Tool/" target="_blank">Try it out?</a>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <button class="back-button">
+        <a href="../Website (True).html">Go back to the Website?</a>
+    </button>
+
+    <script>
+        // Script to add 'visible' class to gallery items and back button on scroll
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const backButton = document.querySelector('.back-button');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        galleryItems.forEach(item => {
+            observer.observe(item);
+        });
+
+        observer.observe(backButton);
+    </script>
+</body>
+</html>

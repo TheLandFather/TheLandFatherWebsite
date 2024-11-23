@@ -1,0 +1,74 @@
+Use to add new Photos or Videos.
+
+
+Photos
+
+Left
+
+    <div class="gallery-item stair-left">
+        <img src="path/to/image.jpg" alt="Image">
+        <div class="description description-left">
+            <h3>Title</h3>
+            <p>Description</p>
+        </div>
+    </div>
+
+
+Middle
+
+    <div class="gallery-item stair-middle">
+        <img src="path/to/image.jpg" alt="Image">
+        <div class="description description-center">
+            <h3>Title</h3>
+            <p>Description</p>
+        </div>
+    </div>
+
+
+Right
+
+    <div class="gallery-item stair-right">
+        <img src="path/to/image.jpg" alt="Image">
+        <div class="description description-right">
+            <h3>Title</h3>
+            <p>Description</p>
+        </div>
+    </div>
+
+
+
+
+Videos
+
+Left
+
+    <div class="gallery-item stair-left">
+        <video src="path/to/video.mp4" controls></video>
+        <div class="description description-left">
+            <h3>Title</h3>
+            <p>Description</p>
+        </div>
+    </div>
+
+
+
+Middle
+
+    <div class="gallery-item stair-middle">
+        <video src="path/to/video.mp4" controls></video>
+        <div class="description description-center">
+            <h3>Title</h3>
+            <p>Description</p>
+        </div>
+    </div>
+
+
+Right
+
+    <div class="gallery-item stair-right">
+        <video src="path/to/video.mp4" controls></video>
+        <div class="description description-right">
+            <h3>Title</h3>
+            <p>Description</p>
+        </div>
+    </div>
