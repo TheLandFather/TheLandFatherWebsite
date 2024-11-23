@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emmanuel's Website</title>
+<link href="https://fonts.googleapis.com/css2?family=Chunk+Five&display=swap" rel="stylesheet">
+<style>
+    /* Basic Styles */
+    body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        font-family: 'Chunk Five', sans-serif;
+        background: black;
+        color: red;
+        overflow-x: hidden; /* Prevent horizontal scroll */
+    }
+    /* Video Styles */
+    #bgVideo {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 1;
+        z-index: -1; /* Ensure the video is behind other content */
+    }
+    /* Information Box Styles */
+    .border-box {
+        position: absolute;
+        padding: 20px;
+        border: 2px solid rgb(255, 255, 255);
+        border-radius: 5px;
+        background: rgba(0, 0, 0, 0.8);
+        color: rgb(255, 255, 255);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.4s ease-in-out;
+        z-index: 1; /* Ensure content boxes are above the video */
+        will-change: opacity, visibility;
+    }
+    /* Specific Positioning */
+    #about { top: 12%; left: 5%; width: 40%; height: 20%; }
+    #gallery { top: 41.9%; left: 5%; width: 40%; height: 20%; }
+    #hobbies { top: 71%; left: 5%; width: 40%; height: 20%; }
+    #goals { top: 16%; left: 55%; width: 40%; height: 33%; }
+    #gamesuggestions { top: 58%; left: 55%; width: 40%; height: 33%; }
+    /* Title Styles */
+    .title {
+        position: absolute;
+        top: 5px;
+        width: 100%;
+        text-align: center;
+        font-size: 52px;
+        color: rgb(255, 255, 255);
+        text-shadow: 2px 2px black;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.4s ease-in-out;
+        font-weight: 700; /* Make the font thicker */
+        z-index: 1; /* Ensure title is above the video */
+        will-change: opacity, visibility;
+    }
+    /* Button Styles */
+    .button {
+        display: inline-block;
+        margin-top: -7px;
+        padding: 5px 20px;
+        color: black;
+        background-color: rgb(255, 255, 255);
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 1.5vw;
+        font-family: 'Chunk Five', sans-serif;
+        z-index: 1; /* Ensure buttons are above the video */
+        will-change: opacity, visibility;
+    }
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+        body, html {
+            height: auto;
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+        .border-box {
+            position: static;
+            width: 80%;
+            margin: 10px auto;
+        }
+        #about, #gallery, #hobbies, #goals, #gamesuggestions {
+            width: 80%;
+            left: 10%;
+        }
+        .title {
+            font-size: 10vw;
+            position: static;
+            margin-top: 20px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<!-- Background Video -->
+<video id="bgVideo" autoplay muted playsinline loop>
+    <source id="bgVideoSource" src="../Website Material(s)/TLFBackgroundLoop.mp4" type="video/mp4">
+</video>
+
+<!-- Title -->
+<div class="title">Welcome to Emmanuel's Website</div>
+
+<!-- Information Boxes -->
+<div id="about" class="border-box">
+    <h2>About Me</h2>
+    <p>Welcome to my website. If you want to learn more about the creator of this website, click "Learn More" below.</p>
+    <a href="AboutPage/AboutPage(Intro).html" class="button">Learn More</a>
+</div>
+
+<div id="gallery" class="border-box">
+    <h2>Gallery/Projects</h2>
+    <p>Check out some of my works and projects by clicking "See More" below. From coding challenges to creative arts, here's a glimpse into my portfolio.</p>
+    <a href="GalleryProjectPage/GalleryProjectPage.html" class="button">See More</a>
+</div>
+
+<div id="hobbies" class="border-box">
+    <h2>Hobbies</h2>
+    <p>I enjoy coding, gaming, and exploring new technologies. Want to know more about what I do? Click "Learn More" below.</p>
+    <a href="HobbiesPage/HobbiesPage.html" class="button">Learn More</a>
+</div>
+
+<div id="goals" class="border-box">
+    <h2>My Goals</h2>
+    <p>I have many things I want to do in the future, from creating new games and apps to helping people, including my family. Buying new equipment, gadgets, and devices helps enhance my coding and gaming skills. I also want to learn new things through experiences and connect with others. If you're interested in learning more, click "Learn More" below.</p>
+    <a href="MyGoalsPage/MyGoalsPage.html" class="button">Learn More</a>
+</div>
+
+<div id="gamesuggestions" class="border-box">
+    <h2>Game Suggestions</h2>
+    <p>Are you a fan of playing games? Maybe you'll like some of the games we suggest: racing, strategy, shooter, and combat building games. We also have a bonus genre you might enjoy. Click "Learn More" below to start your journey in finding new games to play.</p>
+    <a href="GameSuggestionPage/GameSuggestionPage.html" class="button">Learn More</a>
+</div>
+
+<script>
+    function setVideoSource() {
+        const bgVideo = document.getElementById('bgVideo');
+        const bgVideoSource = document.getElementById('bgVideoSource');
+        if (window.innerWidth < window.innerHeight) {
+            bgVideoSource.src = "../Website Material(s)/TLFBackgroundLoop (Portrait).mp4";
+        } else {
+            bgVideoSource.src = "../Website Material(s)/TLFBackgroundLoop.mp4";
+        }
+        bgVideo.load();
+        bgVideo.play();
+    }
+
+    // Video and content fade-in logic
+    document.addEventListener('DOMContentLoaded', function() {
+        setVideoSource();
+        
+        const bgVideo = document.getElementById('bgVideo');
+        const boxes = document.querySelectorAll('.border-box');
+        const title = document.querySelector('.title');
+
+        // Ensure video stays at the background
+        bgVideo.style.zIndex = 0;
+
+        bgVideo.style.opacity = 0;
+        setTimeout(function() {
+            bgVideo.style.opacity = 1;
+            // Fade in the title first
+            title.style.visibility = 'visible';
+            title.style.opacity = 1;
+            setTimeout(function() {
+                // Fade in information boxes one by one
+                boxes.forEach((box, index) => {
+                    setTimeout(() => {
+                        box.style.visibility = 'visible';
+                        box.style.opacity = 1;
+                    }, index * 500);
+                });
+            }, 500); // Delay to fade in boxes after title
+        }, 300); // Delay before showing the background video
+    });
+
+    // Update video source on orientation change
+    window.addEventListener('orientationchange', function() {
+        setVideoSource();
+    });
+
+    // Ensure video source is set initially
+    setVideoSource();
+</script>
+
+</body>
+</html>

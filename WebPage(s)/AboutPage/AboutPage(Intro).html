@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Page Intro</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: black;
+        }
+        #intro-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .fade-out {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <video id="intro-video" autoplay muted playsinline>
+        <source id="video-source" src="Material(s)/AboutPageIntro.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div id="fadeEffect" class="fade-out"></div>
+    <script>
+        function setVideoSource() {
+            const videoElement = document.getElementById('intro-video');
+            const sourceElement = document.getElementById('video-source');
+            if (window.innerWidth < window.innerHeight) {
+                // Use portrait video
+                sourceElement.src = "Material(s)/AboutPageIntro(Portrait).mp4";
+            } else {
+                // Use landscape video
+                sourceElement.src = "Material(s)/AboutPageIntro.mp4";
+            }
+            videoElement.load();
+        }
+
+        document.getElementById('intro-video').addEventListener('ended', function() {
+            document.getElementById('fadeEffect').style.opacity = 1;
+            setTimeout(function() {
+                window.location.href = 'AboutPage.html';
+            }, 500);
+        });
+
+        // Ensure elements are visible on orientation change and set correct video source
+        window.addEventListener('orientationchange', function() {
+            setVideoSource();
+            document.getElementById('fadeEffect').style.opacity = 0;
+            document.getElementById('fadeEffect').style.visibility = 'visible';
+        });
+
+        // Initial set of the video source
+        setVideoSource();
+    </script>
+</body>
+</html>
