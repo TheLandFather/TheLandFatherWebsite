@@ -4,199 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Game Suggestions</title>
-    <style>
-        body {
-            background-color: black;
-            color: white;
-            font-family: Arial, sans-serif;
-            user-select: none;
-            margin: 0;
-            padding: 0;
-            opacity: 0; /* Initially hide body */
-            animation: fadeIn 2s forwards; /* Fade in effect */
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-
-        #top-bar {
-            width: 100%;
-            border: 1px solid white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-        }
-        #top-bar button {
-            border: 1px solid white;
-            background-color: transparent;
-            color: white;
-            padding: 10px;
-            cursor: pointer;
-        }
-        h1 {
-            font-size: 96px; /* 1 inch roughly equals 96px */
-            text-align: center;
-            margin-top: 20px;
-        }
-        .genre-title {
-            font-size: 48px; /* 0.5 inch roughly equals 48px */
-            text-align: center;
-            margin-top: 20px;
-        }
-        .icons {
-            display: flex;
-            justify-content: center;
-            gap: 40px; /* Adjust gap as needed */
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-        .icon {
-            text-align: center;
-        }
-        .icon img {
-            width: 180px;
-            height: 180px;
-            cursor: pointer;
-            transition: opacity 0.5s ease; /* Fade effect for icons */
-        }
-        .icon-title {
-            font-size: 24px; /* Roughly 2 cm */
-        }
-        .box {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start; /* Align items to the top */
-            overflow-y: auto;
-            opacity: 0; /* Initially hide boxes */
-            transition: opacity 0.5s ease; /* Fade effect for boxes */
-        }
-        .box .top-bar {
-            width: 100%;
-            border: 1px solid white;
-            display: flex;
-            justify-content: flex-end;
-        }
-        .box .top-bar button {
-            border: none;
-            background-color: transparent;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        .game-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            padding: 20px;
-        }
-        .game {
-            width: 2in; /* 1 inch roughly equals 96px */
-            height: 2in;
-            text-align: center;
-            font-size: 0.7cm;
-        }
-        .game img {
-            width: 2in;
-            height: 2in;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            h1 {
-                font-size: 48px;
-            }
-            .genre-title {
-                font-size: 24px;
-            }
-            .icon img {
-                width: 120px;
-                height: 120px;
-            }
-            .game {
-                width: 1.5in;
-                height: 1.5in;
-                font-size: 0.5cm;
-            }
-            .game img {
-                width: 1.5in;
-                height: 1.5in;
-            }
-        }
-
-        @media (orientation: portrait) {
-            h1 {
-                font-size: 72px;
-            }
-            .genre-title {
-                font-size: 36px;
-            }
-            .icon img {
-                width: 150px;
-                height: 150px;
-            }
-        }
-
-        @media (orientation: landscape) {
-            h1 {
-                font-size: 96px;
-            }
-            .genre-title {
-                font-size: 48px;
-            }
-            .icon img {
-                width: 180px;
-                height: 180px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
     <script src="JQuery 3.7.1.js"></script>
-    <script>
-        $(document).ready(function() {
-            // Fade in the body when the page loads
-            $('body').css('opacity', '0').animate({opacity: 1}, 2000);
-
-            // Function to show the box with fade effect
-            function showBox(boxId) {
-                $(boxId).css('display', 'flex').animate({opacity: 1}, 500);
-            }
-
-            // Function to hide the box with fade effect
-            function hideBox(boxId) {
-                $(boxId).animate({opacity: 0}, 500, function() {
-                    $(this).css('display', 'none');
-                });
-            }
-
-            $('.icon img').click(function() {
-                var genre = $(this).attr('alt').replace(/\s/g, '');
-                showBox('#'+genre+'Box');
-            });
-
-            $('.box button').click(function() {
-                hideBox($(this).closest('.box'));
-            });
-
-            $('#OfflineBotGames').click(function() {
-                window.open('https://www.offlinebots.com', '_blank');
-            });
-        });
-    </script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div id="top-bar">
-        <button onclick="window.location.href='../Website (True).html'">Back to the Website</button>
+        <button onclick="window.location.href='../Website (True).html'">BACK TO THE WEBSITE</button>
     </div>
     <h1>My Game Suggestions</h1>
     <div class="genre-title">Genres</div>
@@ -231,8 +45,35 @@
         </div>
         <div class="game-list">
             <div class="game">
-                <img src="Material(s)/RacingGames/Forza Horizon 4.png" alt="Forza Horizon 4">
-                <div>Forza Horizon 4</div>
+                <a href="https://store.steampowered.com/app/1293830/Forza_Horizon_4/" target="_blank">
+                    <img src="Material(s)/RacingGames/Forza Horizon 4.png" alt="Forza Horizon 4">
+                    <div>Forza Horizon 4</div>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://store.steampowered.com/app/1551360/Forza_Horizon_5/" target="_blank">
+                    <img src="Material(s)/RacingGames/Forza Horizon 5.png" alt="Forza Horizon 5">
+                    <div>Forza Horizon 5</div>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://store.steampowered.com/app/1238080/Burnout_Paradise_Remastered/" target="_blank">
+                    <img src="Material(s)/RacingGames/Burnout Paradise Remastered.png" alt="Burnout Paradise Remastered">
+                    <div>Burnout Paradise Remastered</div>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://store.steampowered.com/app/1262600/Need_for_Speed_Rivals/" target="_blank">
+                    <img src="Material(s)/RacingGames/Need for Speed Rivals.png" alt="Need for Speed Rivals">
+                    <div>Need for Speed Rivals</div>
+                </a>
+            </div>
+
+            <div class="game">
+                <a href="https://www.amazon.co.uk/dp/B00IDIEI0Y?tag=pcgamingwiki-21" target="_blank">
+                    <img src="Material(s)/RacingGames/Need For Speed The Run.png" alt="Need For Speed The Run">
+                    <div>Need For Speed The Run</div>
+                </a>
             </div>
         </div>
     </div>
@@ -244,8 +85,34 @@
         </div>
         <div class="game-list">
             <div class="game">
-                <img src="Material(s)/ShooterGames/Star Wars Battlefront.png" alt="Star Wars Battlefront">
-                <div>Star Wars Battlefront</div>
+                <a href="https://store.steampowered.com/app/1237980/STAR_WARS_Battlefront/" target="_blank">
+                    <img src="Material(s)/ShooterGames/Star Wars Battlefront Series.png" alt="Star Wars Battlefront Series">
+                    <div>Star Wars Battlefront Series</div>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://store.steampowered.com/app/636480/Ravenfield/" target="_blank">
+                    <img src="Material(s)/ShooterGames/RavenField.png" alt="RavenField">
+                    <div>RavenField</div>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://store.steampowered.com/app/1163910/Brass_Brigade/" target="_blank">
+                    <img src="Material(s)/ShooterGames/Brass Brigade.png" alt="Brass Brigade">
+                    <div>Brass Brigade</div>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://store.steampowered.com/app/699130/World_War_Z/" target="_blank">
+                    <img src="Material(s)/ShooterGames/World War Z.png" alt="World War Z">
+                    <div>World War Z</div>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://store.steampowered.com/app/1874880/Arma_Reforger/" target="_blank">
+                    <img src="Material(s)/ShooterGames/Arma Reforger.png" alt="Arma Reforger">
+                    <div>Arma Reforger</div>
+                </a>
             </div>
         </div>
     </div>
@@ -257,8 +124,58 @@
         </div>
         <div class="game-list">
             <div class="game">
-                <img src="Material(s)/StrategyGames/Rusted Warfare.png" alt="Rusted Warfare">
-                <div>Rusted Warfare</div>
+                <a href="https://store.steampowered.com/app/647960/Rusted_Warfare__RTS/" target="_blank">
+                    <img src="Material(s)/StrategyGames/Rusted Warfare.png" alt="Rusted Warfare">
+                    <div>Rusted Warfare</div>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://store.steampowered.com/app/644930/They_Are_Billions/" target="_blank">
+                    <img src="Material(s)/StrategyGames/They Are Billions.png" alt="They Are Billions">
+                    <div>They Are Billions</div>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://fractalsoftworks.com" target="_blank">
+                    <img src="Material(s)/StrategyGames/Starsector.png" alt="Starsector">
+                    <div>Starsector</div>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://store.steampowered.com/app/294100/RimWorld/" target="_blank">
+                    <img src="Material(s)/StrategyGames/RimWorld.png" alt="RimWorld">
+                    <div>RimWorld</div>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://store.steampowered.com/app/512470/The_Pirate_Caribbean_Hunt/" target="_blank">
+                    <img src="Material(s)/StrategyGames/The Pirate Carribean Hunt.png" alt="The Pirate: Carribean Hunt">
+                    <div>The Pirate: Carribean Hunt</div>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://store.steampowered.com/publisher/ginormocorp" target="_blank">
+                    <img src="Material(s)/StrategyGames/Survivalist Series.png" alt="Survivalist Series">
+                    <div>Survivalist Series</div>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://store.steampowered.com/bundle/29237/State_of_Decay_Complete_Collection/" target="_blank">
+                    <img src="Material(s)/StrategyGames/State of Decay Series.png" alt="State of Decay Series">
+                    <div>State of Decay Series</div>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://store.steampowered.com/app/1330460/Becastled/" target="_blank">
+                    <img src="Material(s)/StrategyGames/Becastled.png" alt="Becastled">
+                    <div>Becastled</div>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://store.steampowered.com/bundle/9717/This_War_of_Mine_Complete_Edition/" target="_blank">
+                    <img src="Material(s)/StrategyGames/This War of Mine.png" alt="This War of Mine">
+                    <div>This War of Mine</div>
+                </a>
             </div>
         </div>
     </div>
@@ -270,8 +187,46 @@
         </div>
         <div class="game-list">
             <div class="game">
-                <img src="Material(s)/CombatBuildingGames/TerraTech.png" alt="TerraTech">
-                <div>TerraTech</div>
+                <a href="https://store.steampowered.com/app/346010/Besiege/" target="_blank">
+                    <img src="Material(s)/CombatBuildingGames/Besiege.png" alt="Besiege">
+                    <div>Besiege</div>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://store.steampowered.com/app/342560/Airships_Conquer_the_Skies/" target="_blank">
+                    <img src="Material(s)/CombatBuildingGames/Airships (Conquer the Skies).png" alt="Airships: Conquer the Skies">
+                    <div>Airships: Conquer the Skies</div>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://store.steampowered.com/app/285920/TerraTech/" target="_blank">
+                    <img src="Material(s)/CombatBuildingGames/TerraTech.png" alt="TerraTech">
+                    <div>TerraTech</div>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://store.steampowered.com/app/799600/Cosmoteer_Starship_Architect__Commander/" target="_blank">
+                    <img src="Material(s)/CombatBuildingGames/Cosmoteer.png" alt="Cosmoteer">
+                    <div>Cosmoteer</div>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://store.steampowered.com/app/268650/From_the_Depths/" target="_blank">
+                    <img src="Material(s)/CombatBuildingGames/From the Depths.png" alt="From the Depths">
+                    <div>From the Depths</div>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://store.steampowered.com/app/270110/Block_Story/" target="_blank">
+                    <img src="Material(s)/CombatBuildingGames/Block Story.png" alt="Block Story">
+                    <div>Block Story</div>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://store.steampowered.com/app/814480/Mini_World_CREATA/" target="_blank">
+                    <img src="Material(s)/CombatBuildingGames/Mini World CREATA.png" alt="Mini World: CREATA">
+                    <div>Mini World: CREATA</div>
+                </a>
             </div>
         </div>
     </div>

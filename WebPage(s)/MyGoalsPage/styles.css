@@ -1,0 +1,206 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Times New Roman", Times, serif;
+    background: url('Material(s)/MyGoals.png') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    transition: background-image 1s ease-in-out;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align content at the top */
+    height: 100vh;
+    text-align: center;
+    animation: fadeIn 3s;
+    z-index: 2;
+    position: relative;
+    padding: 20px;
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.top-bar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.top-bar h1 {
+    font-size: 2.14cm;
+    margin: 0;
+    padding: 10px;
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: 80%;
+}
+
+.left-icon {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 3cm;
+    height: 3cm;
+    z-index: 4;
+}
+
+.right-icon {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 3cm;
+    height: 3cm;
+    z-index: 4;
+}
+
+.content {
+    width: 100%;
+    padding: 0 0.3cm;
+    margin-top: calc(50vh + 1in); /* Move the content 1 inch down from the middle */
+}
+
+.title-wrapper, .description-wrapper {
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%; /* Ensure the background extends to the edges */
+    display: flex;
+    justify-content: center;
+    padding: 0; /* Remove extra padding */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+    position: relative;
+}
+
+.title-wrapper {
+    position: sticky; /* Ensure it stays in place while scrolling */
+    top: 0; /* Stick to the top when scrolling */
+    z-index: 5; /* Ensure it stays on top */
+    text-align: center; /* Center the content */
+}
+
+.description-wrapper {
+    margin-top: 0.5in; /* Ensure it's below the title */
+    position: relative; /* Allow it to scroll */
+    left: 0;
+    right: 0;
+    text-align: center; /* Center the content */
+}
+
+.title, .description {
+    padding: 10px;
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: 80%;
+    text-align: center;
+    opacity: 1; /* Ensure visibility */
+    margin: 0 auto; /* Center the content */
+}
+
+.title {
+    font-size: 1.2cm;
+}
+
+.description {
+    font-size: .9cm;
+}
+
+.arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2cm;
+    height: 2cm;
+    cursor: pointer;
+    z-index: 3;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.arrow.left {
+    left: 0.3cm;
+}
+
+.arrow.right {
+    right: 0.3cm;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .top-bar h1 {
+        font-size: 1cm;
+        max-width: 80%;
+        margin: 0 auto;
+    }
+    .left-icon, .right-icon {
+        width: 2.5cm;  /* Enlarge icons on mobile */
+        height: 2.5cm; /* Enlarge icons on mobile */
+    }
+    .arrow {
+        width: 1cm; /* Adjust arrow size if needed */
+        height: 1cm; /* Adjust arrow size if needed */
+    }
+    .content {
+        margin-top: calc(50vh + 1in); /* Ensure it's 1 inch down from the middle */
+    }
+    .title {
+        font-size: 1cm;
+    }
+    .description {
+        font-size: .4cm;
+    }
+    .title-wrapper {
+        padding: 0;
+        text-align: center; /* Center the content */
+    }
+    .description-wrapper {
+        margin-top: 0.5in; /* Ensure it's below the title */
+        padding: 0;
+        text-align: center; /* Center the content */
+    }
+}
+
+@media (max-width: 480px) {
+    .top-bar h1 {
+        font-size: 1cm;
+        max-width: 80%;
+        margin: 0 auto;
+    }
+    .left-icon, .right-icon {
+        width: 2.5cm;  /* Further enlarge icons on smaller devices */
+        height: 2.5cm; /* Further enlarge icons on smaller devices */
+    }
+    .arrow {
+        width: 1.3cm; /* Adjust arrow size if needed */
+        height: 1.3cm; /* Adjust arrow size if needed */
+    }
+    .content {
+        margin-top: calc(50vh + 1in); /* Ensure it's 1 inch down from the middle */
+    }
+    .title {
+        font-size: 1cm;
+    }
+    .description {
+        font-size: 0.4cm;
+    }
+    .title-wrapper {
+        padding: 0;
+        text-align: center; /* Center the content */
+    }
+    .description-wrapper {
+        margin-top: 0.5in; /* Ensure it's below the title */
+        padding: 0;
+        text-align: center; /* Center the content */
+    }
+}
