@@ -118,8 +118,12 @@
 <body>
 
 <!-- Intro and Background Videos -->
-<video id="introVideo" src="Website Material(s)/TheLandFatherIntro.mp4" autoplay muted playsinline></video>
-<video id="bgVideo" src="Website Material(s)/TLFBackgroundLoop.mp4" loop muted playsinline></video>
+<video id="introVideo" autoplay muted playsinline>
+    <source id="introVideoSource" src="Website Material(s)/TheLandFatherIntro.mp4" type="video/mp4">
+</video>
+<video id="bgVideo" loop muted playsinline>
+    <source id="bgVideoSource" src="Website Material(s)/TLFBackgroundLoop.mp4" type="video/mp4">
+</video>
 
 <!-- Title -->
 <div class="title">Welcome to Emmanuel's Website</div>
@@ -133,31 +137,62 @@
 
 <div id="gallery" class="border-box">
     <h2>Gallery/Projects</h2>
-    <p>Check out some of my works and projects by clicking "See More" below. From coding challenges to creative arts, here's a glimpse into my portfolio.</p>
+    <p>C</p>
     <a href="gallery.html" class="button">See More</a>
 </div>
 
 <div id="hobbies" class="border-box">
     <h2>Hobbies</h2>
-    <p>I enjoy coding, gaming, and exploring new technologies. Want to know more about what I do? Click "Learn More" below.</p>
+    <p>I</p>
     <a href="hobbies.html" class="button">Learn More</a>
 </div>
 
 <div id="goals" class="border-box">
     <h2>My Goals</h2>
-    <p>I have many things I want to do in the future, from creating new games and apps to helping people, including my family. Buying new equipment, gadgets, and devices helps enhance my coding and gaming skills. I also want to learn new things through experiences and connect with others. If you're interested in learning more, click "Learn More" below.</p>
+    <p>I.</p>
     <a href="WebPage(s)/MyGoalsPage/MyGoalsPage.html" class="button">Learn More</a>
 </div>
 
 <div id="gameSuggestions" class="border-box">
     <h2>Game Suggestions</h2>
-    <p>Are you a fan of playing games? Maybe you'll like some of the games we suggest: racing, strategy, shooter, and combat building games. We also have a bonus genre you might enjoy. Click "Learn More" below to start your journey in finding new games to play.</p>
+    <p>Are.</p>
     <a href="WebPage(s)/GameSuggestionPage/GameSuggestionPage.html" class="button">Learn More</a>
 </div>
 
 <script>
-    // Video transition logic
+    let introPlayed = false;
+
+    function setVideoSources() {
+        const introVideo = document.getElementById('introVideo');
+        const bgVideo = document.getElementById('bgVideo');
+        const introVideoSource = document.getElementById('introVideoSource');
+        const bgVideoSource = document.getElementById('bgVideoSource');
+
+        if (window.innerWidth < window.innerHeight) {
+            // Use portrait videos
+            introVideoSource.src = "Website Material(s)/TheLandFatherIntro (Portrait).mp4";
+            bgVideoSource.src = "Website Material(s)/TLFBackgroundLoop (Portrait).mp4";
+        } else {
+            // Use landscape videos
+            introVideoSource.src = "Website Material(s)/TheLandFatherIntro.mp4";
+            bgVideoSource.src = "Website Material(s)/TLFBackgroundLoop.mp4";
+        }
+        
+        introVideo.load();
+        bgVideo.load();
+
+        if (introPlayed) {
+            // Skip intro video if it has already been played
+            introVideo.style.display = 'none';
+            bgVideo.style.display = 'block';
+            bgVideo.currentTime = 0;
+            bgVideo.play();
+        }
+    }
+
     document.getElementById('introVideo').addEventListener('ended', function() {
+        introPlayed = true; // Mark the intro as played
+
         var introVideo = document.getElementById('introVideo');
         var bgVideo = document.getElementById('bgVideo');
         var boxes = document.querySelectorAll('.border-box');
@@ -193,6 +228,8 @@
 
     // Ensure elements reappear on orientation change
     window.addEventListener('orientationchange', function() {
+        setVideoSources();
+        const bgVideo = document.getElementById('bgVideo');
         var boxes = document.querySelectorAll('.border-box');
         var title = document.querySelector('.title');
         title.style.visibility = 'visible';
@@ -201,7 +238,14 @@
             box.style.visibility = 'visible';
             box.style.opacity = 1;
         });
+
+        // Reload and play the background video to ensure it loops properly
+        bgVideo.currentTime = 0;
+        bgVideo.play();
     });
+
+    // Initial set of video sources
+    setVideoSources();
 </script>
 
 </body>

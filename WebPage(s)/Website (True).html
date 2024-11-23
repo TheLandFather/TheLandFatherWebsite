@@ -105,7 +105,9 @@
 <body>
 
 <!-- Background Video -->
-<video id="bgVideo" src="../Website Material(s)/TLFBackgroundLoop.mp4" loop autoplay muted playsinline></video>
+<video id="bgVideo" autoplay muted playsinline loop>
+    <source id="bgVideoSource" src="../Website Material(s)/TLFBackgroundLoop.mp4" type="video/mp4">
+</video>
 
 <!-- Title -->
 <div class="title">Welcome to Emmanuel's Website</div>
@@ -142,11 +144,25 @@
 </div>
 
 <script>
+    function setVideoSource() {
+        const bgVideo = document.getElementById('bgVideo');
+        const bgVideoSource = document.getElementById('bgVideoSource');
+        if (window.innerWidth < window.innerHeight) {
+            bgVideoSource.src = "../Website Material(s)/TLFBackgroundLoop (Portrait).mp4";
+        } else {
+            bgVideoSource.src = "../Website Material(s)/TLFBackgroundLoop.mp4";
+        }
+        bgVideo.load();
+        bgVideo.play();
+    }
+
     // Video and content fade-in logic
     document.addEventListener('DOMContentLoaded', function() {
-        var bgVideo = document.getElementById('bgVideo');
-        var boxes = document.querySelectorAll('.border-box');
-        var title = document.querySelector('.title');
+        setVideoSource();
+        
+        const bgVideo = document.getElementById('bgVideo');
+        const boxes = document.querySelectorAll('.border-box');
+        const title = document.querySelector('.title');
 
         // Ensure video stays at the background
         bgVideo.style.zIndex = 0;
@@ -168,6 +184,14 @@
             }, 500); // Delay to fade in boxes after title
         }, 300); // Delay before showing the background video
     });
+
+    // Update video source on orientation change
+    window.addEventListener('orientationchange', function() {
+        setVideoSource();
+    });
+
+    // Ensure video source is set initially
+    setVideoSource();
 </script>
 
 </body>
